@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 interface StyledButtonProps {
@@ -13,7 +14,7 @@ interface StyledButtonProps {
     | "gradient";
 }
 
-interface ButtonProps {
+interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: string;
 }
 
@@ -61,6 +62,10 @@ const StyledButton = styled.button<StyledButtonProps>`
   }
 `;
 
-export const Button: React.FC<ButtonProps> = ({ children }) => {
-  return <StyledButton $backgroudColor="gradient">{children}</StyledButton>;
+export const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
+  return (
+    <StyledButton $backgroudColor="gradient" {...props}>
+      {children}
+    </StyledButton>
+  );
 };
