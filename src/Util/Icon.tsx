@@ -1,0 +1,21 @@
+import { HiChatBubbleBottomCenterText } from "react-icons/hi2";
+import styled from "styled-components";
+
+const StyledIcon = styled.div`
+  background: linear-gradient(135deg, var(--red), var(--purple));
+  width: 6.4rem;
+  height: 6.4rem;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Icon = () => {
+  return (
+    <StyledIcon>
+      <HiChatBubbleBottomCenterText size={48} />
+    </StyledIcon>
+  );
+};
