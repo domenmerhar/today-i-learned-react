@@ -10,6 +10,11 @@ const StyledIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  transition: all 200ms;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const Icon = () => {
