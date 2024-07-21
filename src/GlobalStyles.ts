@@ -19,6 +19,7 @@ const GlobalStyles = createGlobalStyle`
         --black: #000000;
         --white: #FFFFFF;
 
+        --zinc-400: #a1a1aa;
         --zinc-600: #52525b;
         --zinc-700: #3f3f46;
         --zinc-800: #27272a;
