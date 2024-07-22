@@ -19,6 +19,7 @@ const GlobalStyles = createGlobalStyle`
         --black: #000000;
         --white: #FFFFFF;
 
+        --zinc-100: #f4f4f5;
         --zinc-200: #e5e7eb;
         --zinc-300: #d4d4d8;
         --zinc-400: #a1a1aa;
@@ -40,6 +41,11 @@ const GlobalStyles = createGlobalStyle`
     body {
         background-color: var(--zinc-800);
         color: white;
+        width: 100vw;
+        overflow-x: hidden;
+
+        display: flex;
+        justify-content: center;
     }
 `;
 
