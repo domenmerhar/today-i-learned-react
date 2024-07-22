@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { Button } from "../../Util/Button";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { useState } from "react";
 
 const StyledAddFact = styled.form`
   display: flex;
@@ -51,17 +53,31 @@ const Select = styled.select`
 const SourceInput = styled(FactInput)``;
 
 export const AddFact = () => {
-  const { register, handleSubmit, getValues } = useForm();
+  const { register, handleSubmit: handleSubmitHook, getValues } = useForm();
+  const [charactersRemaining, setCharactersRemaining] = useState<number>(255);
+
+  const handleSubmit = handleSubmitHook(() => {
+    console.log(getValues("category"));
+    if (!getValues("category")) return toast.error("Please select a category");
+
+    toast.success("Data sent");
+  });
 
   return (
-    <StyledAddFact onSubmit={handleSubmit(() => console.log(getValues()))}>
+    <StyledAddFact onSubmit={handleSubmit}>
       <FactInput
         maxLength={255}
+        required
         placeholder="Share a fact ..."
         {...register("fact")}
+        onChange={(e) => setCharactersRemaining(255 - e.target.value?.length)}
       />
-      <WordCounter>255</WordCounter>
-      <SourceInput placeholder="Valid source" {...register("source")} />
+      <WordCounter>{charactersRemaining}</WordCounter>
+      <SourceInput
+        required
+        placeholder="Valid source"
+        {...register("source")}
+      />
       <Select {...register("category")}>
         <option value="">Choose category</option>
         <option value="technology">Technology</option>
