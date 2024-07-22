@@ -1,24 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-
-type backgroundColorType =
-  | "blue"
-  | "green"
-  | "red"
-  | "yellow"
-  | "pink"
-  | "teal"
-  | "orange"
-  | "purple"
-  | "gradient";
+import { BackgroundColorType } from "../types";
 
 interface StyledButtonProps {
-  $backgroudColor: backgroundColorType;
+  $backgroudColor: BackgroundColorType;
 }
 
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: string;
-  backgroundColor: backgroundColorType;
+  backgroundColor: BackgroundColorType;
 }
 
 const StyledButton = styled.button<StyledButtonProps>`
