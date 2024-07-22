@@ -54,6 +54,7 @@ export const AddFact = () => {
       <WordCounter>251</WordCounter>
       <SourceInput placeholder="Valid source" />
       <Select>
+        <option value="">Choose category</option>
         <option value="technology">Technology</option>
         <option value="science">Science</option>
         <option value="finance">Finance</option>
