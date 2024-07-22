@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Button } from "../../Util/Button";
+import { useForm } from "react-hook-form";
 
-const StyledAddFact = styled.div`
+const StyledAddFact = styled.form`
   display: flex;
   align-items: center;
   gap: 16px;
@@ -9,6 +10,8 @@ const StyledAddFact = styled.div`
   background-color: var(--zinc-600);
   border-radius: 16px;
   padding: 1rem 1.5rem;
+
+  grid-column: 1 / -1;
 
   & > :nth-child(1) {
     flex: 1;
@@ -48,12 +51,18 @@ const Select = styled.select`
 const SourceInput = styled(FactInput)``;
 
 export const AddFact = () => {
+  const { register, handleSubmit, getValues } = useForm();
+
   return (
-    <StyledAddFact>
-      <FactInput placeholder="Share a fact ..." />
-      <WordCounter>251</WordCounter>
-      <SourceInput placeholder="Valid source" />
-      <Select>
+    <StyledAddFact onSubmit={handleSubmit(() => console.log(getValues()))}>
+      <FactInput
+        maxLength={255}
+        placeholder="Share a fact ..."
+        {...register("fact")}
+      />
+      <WordCounter>255</WordCounter>
+      <SourceInput placeholder="Valid source" {...register("source")} />
+      <Select {...register("category")}>
         <option value="">Choose category</option>
         <option value="technology">Technology</option>
         <option value="science">Science</option>
