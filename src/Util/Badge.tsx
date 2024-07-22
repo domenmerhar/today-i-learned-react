@@ -1,15 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
-type BadgeType =
-  | "technology"
-  | "science"
-  | "finance"
-  | "society"
-  | "entertainment"
-  | "health"
-  | "history"
-  | "news";
+import { BadgeType } from "../types";
 
 interface BadgeProps {
   type: BadgeType;
