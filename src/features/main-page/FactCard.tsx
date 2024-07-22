@@ -6,6 +6,7 @@ const CardHolder = styled.div`
   background-color: var(--zinc-600);
 
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
 
   padding: 1.5rem 2.25rem;
@@ -14,13 +15,20 @@ const CardHolder = styled.div`
   align-items: center;
   border-radius: 16px;
 
-  & > :nth-child(2) {
-    justify-self: center;
-    align-self: center;
+  & > :nth-child(1) {
+    flex: 1 1 30rem;
   }
 
   & > :nth-child(3) {
-    margin-left: auto;
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: 55em) {
+    flex-direction: column;
+
+    & > :nth-child(1) {
+      flex: 0;
+    }
   }
 `;
 
