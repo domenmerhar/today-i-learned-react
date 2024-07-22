@@ -1,26 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 
+type backgroundColorType =
+  | "blue"
+  | "green"
+  | "red"
+  | "yellow"
+  | "pink"
+  | "teal"
+  | "orange"
+  | "purple"
+  | "gradient";
+
 interface StyledButtonProps {
-  $backgroudColor:
-    | "blue"
-    | "green"
-    | "red"
-    | "yellow"
-    | "pink"
-    | "teal"
-    | "orange"
-    | "purple"
-    | "gradient";
+  $backgroudColor: backgroundColorType;
 }
 
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: string;
+  backgroundColor: backgroundColorType;
 }
 
 const StyledButton = styled.button<StyledButtonProps>`
   border: none;
-  padding: 1rem 1.75rem;
+  padding: 1.5rem 2.25rem;
   background: ${(props) => {
     switch (props.$backgroudColor) {
       case "blue":
@@ -62,9 +65,13 @@ const StyledButton = styled.button<StyledButtonProps>`
   }
 `;
 
-export const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
+export const Button: React.FC<ButtonProps> = ({
+  children,
+  backgroundColor,
+  ...props
+}) => {
   return (
-    <StyledButton $backgroudColor="gradient" {...props}>
+    <StyledButton $backgroudColor={backgroundColor} {...props}>
       {children}
     </StyledButton>
   );
