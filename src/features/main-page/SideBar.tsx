@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import { BackgroundColorType, BadgeType } from "../../types";
 import { Button } from "../../Util/Button";
+import { useSearchParams } from "react-router-dom";
+
+type CategoryType = BadgeType | "all";
 
 interface ButtonObject {
   backgroundColor: BackgroundColorType;
-  text: BadgeType | "all";
+  text: CategoryType;
 }
 
 const buttons: ButtonObject[] = [
@@ -53,11 +56,20 @@ const StyledSideBar = styled.aside`
 `;
 
 export const SideBar = () => {
+  const [, setCategory] = useSearchParams();
+
+  const handleClick = (category: CategoryType) => () =>
+    setCategory(category === "all" ? {} : { category });
+
   return (
     <StyledSideBar>
       {buttons.map((button) => (
         <>
-          <Button key={button.text} backgroundColor={button.backgroundColor}>
+          <Button
+            key={button.text}
+            backgroundColor={button.backgroundColor}
+            onClick={handleClick(button.text)}
+          >
             {button.text}
           </Button>
         </>
