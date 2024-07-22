@@ -1,19 +1,34 @@
 import styled from "styled-components";
 import { Badge } from "../../Util/Badge";
+import { VoteButton } from "../../Util/VoteButton";
 
 const CardHolder = styled.div`
   background-color: var(--zinc-600);
 
-  display: grid;
-  grid-template-columns: minmax(30rem, 7fr) minmax(min-content, 1fr) minmax(
-      min-content,
-      2fr
-    );
+  display: flex;
+  gap: 16px;
+
   padding: 1.5rem 2.25rem;
   font-size: 1.6rem;
   font-weight: 500;
   align-items: center;
   border-radius: 16px;
+
+  & > :nth-child(2) {
+    justify-self: center;
+    align-self: center;
+  }
+
+  & > :nth-child(3) {
+    margin-left: auto;
+  }
+`;
+
+const ButtonsHolder = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  justify-self: end;
 `;
 
 const Source = styled.a`
@@ -33,7 +48,11 @@ export const FactCard = () => {
         <Source href="https://reactjs.org/">( Source )</Source>
       </div>
       <Badge type="technology" />
-      <div>buttons</div>
+      <ButtonsHolder>
+        <VoteButton type="like" />
+        <VoteButton type="mindblown" />
+        <VoteButton type="disagree" />
+      </ButtonsHolder>
     </CardHolder>
   );
 };
