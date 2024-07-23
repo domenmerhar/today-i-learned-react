@@ -4,7 +4,7 @@ import { getFacts } from "../api/getFacts";
 
 export const useFacts = (category: BadgeType | null) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ["facts", category],
+    queryKey: ["facts", category || "all"],
     queryFn: () => getFacts(category),
   });
 
