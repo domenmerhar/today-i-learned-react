@@ -1,12 +1,13 @@
 import { Header } from "../features/main-page/Header";
-import { FactCard } from "../features/main-page/FactCard";
 import styled from "styled-components";
 import { SideBar } from "../features/main-page/SideBar";
+import { FactList } from "../features/main-page/FactList";
 
 const StyledMainPage = styled.div`
   display: grid;
   grid-template-columns: 21rem minmax(50rem, 1fr);
   align-items: start;
+  gap: 1.6rem;
 
   width: 80vw;
   padding: 3.2rem 0;
@@ -17,7 +18,7 @@ export const MainPage = () => {
     <StyledMainPage>
       <Header />
       <SideBar />
-      <FactCard />
+      <FactList />
     </StyledMainPage>
   );
 };
