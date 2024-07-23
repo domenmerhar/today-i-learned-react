@@ -13,6 +13,8 @@ const StyledVoteButton = styled.button<{ $active: boolean }>`
     ${(props) => (props.$active ? "--zinc-400" : "--zinc-500")}
   );
 
+  min-width: 6.4rem;
+
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   border-radius: 99999px;
   padding: 0.75rem 1.5rem;
