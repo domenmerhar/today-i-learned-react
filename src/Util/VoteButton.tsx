@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 interface VoteButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   type: "like" | "mindblown" | "disagree";
+  count: number;
 }
 
 const StyledVoteButton = styled.button<{ $active: boolean }>`
@@ -35,31 +36,47 @@ const StyledVoteButton = styled.button<{ $active: boolean }>`
   }
 `;
 
-export const VoteButton: React.FC<VoteButtonProps> = ({ type, ...rest }) => {
+export const VoteButton: React.FC<VoteButtonProps> = ({
+  type,
+  count,
+  ...rest
+}) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
   const toggleClick = () => setIsClicked((prev) => !prev);
 
+  count = isClicked ? count + 1 : count;
+
   return (
-    <StyledVoteButton $active={isClicked} onClick={toggleClick} {...rest}>
+    <StyledVoteButton
+      $active={isClicked}
+      {...rest}
+      onClick={(e) => {
+        if (rest.onClick) {
+          rest.onClick(e);
+        }
+
+        toggleClick();
+      }}
+    >
       {type === "like" && (
         <>
           <span>👍</span>
-          <span>22</span>
+          <span>{count}</span>
         </>
       )}
 
       {type === "mindblown" && (
         <>
           <span>😲</span>
-          <span>22</span>
+          <span>{count}</span>
         </>
       )}
 
       {type === "disagree" && (
         <>
           <span>⛔</span>
-          <span>22</span>
+          <span>{count}</span>
         </>
       )}
     </StyledVoteButton>
