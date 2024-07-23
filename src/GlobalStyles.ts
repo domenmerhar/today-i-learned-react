@@ -28,6 +28,7 @@ const GlobalStyles = createGlobalStyle`
         --zinc-700: #3f3f46;
         --zinc-800: #27272a;
 
+        --danger: #991b1b;
         --red: #ef4444;
         --blue: #3b82f6;
         --green: #22c55e;
