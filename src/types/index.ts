@@ -20,4 +20,25 @@ export type BadgeType =
   | "news"
   | "disputed";
 
-export type ButtonsCategoryType = BadgeType | "all";
+export type CategoryType =
+  | "technology"
+  | "science"
+  | "finance"
+  | "society"
+  | "entertainment"
+  | "health"
+  | "history"
+  | "news"
+  | "all";
+
+export type ButtonsCategoryType = CategoryType;
+
+export interface FactInterface {
+  id: string;
+  category: Omit<CategoryType, "all">;
+  description: string;
+  likes: number;
+  mindblownVotes: number;
+  falseVotes: number;
+  source: string;
+}
