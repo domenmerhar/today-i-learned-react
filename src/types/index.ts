@@ -31,6 +31,8 @@ export type CategoryType =
   | "news"
   | "all";
 
+export type ApiVoteType = "likes" | "mindblownVotes" | "falseVotes";
+
 export type ButtonsCategoryType = CategoryType;
 
 export interface FactInterface {
