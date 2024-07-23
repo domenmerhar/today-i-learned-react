@@ -19,15 +19,13 @@ export const SideBar = () => {
   return (
     <StyledSideBar>
       {BUTTONS_OBJ.map((button) => (
-        <>
-          <Button
-            key={button.text}
-            backgroundColor={button.backgroundColor}
-            onClick={handleClick(button.text)}
-          >
-            {button.text}
-          </Button>
-        </>
+        <Button
+          key={button.text}
+          backgroundColor={button.backgroundColor}
+          onClick={handleClick(button.text)}
+        >
+          {button.text}
+        </Button>
       ))}
     </StyledSideBar>
   );
