@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Badge } from "../../Util/Badge";
 import { VoteButton } from "../../Util/VoteButton";
+import { BadgeType, FactInterface } from "../../types";
 
 const CardHolder = styled.div`
   background-color: var(--zinc-600);
@@ -35,6 +36,7 @@ const CardHolder = styled.div`
 const ButtonsHolder = styled.div`
   display: flex;
   flex-direction: row;
+  gap: 0.4rem;
 
   justify-self: end;
 `;
@@ -48,18 +50,30 @@ const Source = styled.a`
   cursor: pointer;
 `;
 
-export const FactCard = () => {
+interface FactCardProps extends Omit<FactInterface, "description"> {
+  children: string;
+}
+
+export const FactCard: React.FC<FactCardProps> = ({
+  id,
+  children,
+  source,
+  category,
+  likes,
+  mindblownVotes,
+  falseVotes,
+}) => {
   return (
     <CardHolder>
       <div>
-        React is being developed by Meta (formerly Facebook)
-        <Source href="https://reactjs.org/">( Source )</Source>
+        {children}
+        <Source href={source}>( Source )</Source>
       </div>
-      <Badge type="technology" />
+      <Badge type={category as BadgeType} />
       <ButtonsHolder>
-        <VoteButton type="like" />
-        <VoteButton type="mindblown" />
-        <VoteButton type="disagree" />
+        <VoteButton type="like" count={likes} />
+        <VoteButton type="mindblown" count={mindblownVotes} />
+        <VoteButton type="disagree" count={falseVotes} />
       </ButtonsHolder>
     </CardHolder>
   );
