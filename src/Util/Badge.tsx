@@ -31,6 +31,8 @@ const StyledBadge = styled.button<StyledBadgeProps>`
         return "var(--orange)";
       case "news":
         return "var(--purple)";
+      case "disputed":
+        return "var(--danger)";
     }
   }};
 
@@ -45,5 +47,10 @@ const StyledBadge = styled.button<StyledBadgeProps>`
 `;
 
 export const Badge: React.FC<BadgeProps> = ({ type }) => {
-  return <StyledBadge $type={type}>{type}</StyledBadge>;
+  return (
+    <StyledBadge $type={type}>
+      {type === "disputed" && "⛔ "}
+      {type}
+    </StyledBadge>
+  );
 };
