@@ -17,4 +17,7 @@ export type BadgeType =
   | "entertainment"
   | "health"
   | "history"
-  | "news";
+  | "news"
+  | "disputed";
+
+export type ButtonsCategoryType = BadgeType | "all";
