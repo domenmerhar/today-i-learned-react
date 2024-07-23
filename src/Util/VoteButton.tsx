@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useVote } from "../hooks/useVote";
+import { ApiVoteType } from "../types";
 
 interface VoteButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
-  type: "like" | "mindblown" | "disagree";
+  type: ApiVoteType;
+  id: string;
   count: number;
 }
 
@@ -41,11 +44,21 @@ const StyledVoteButton = styled.button<{ $active: boolean }>`
 export const VoteButton: React.FC<VoteButtonProps> = ({
   type,
   count,
+  id,
   ...rest
 }) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
-  const toggleClick = () => setIsClicked((prev) => !prev);
+  const { mutate: mutateAdd } = useVote(id, type, true);
+  const { mutate: mutateRemove } = useVote(id, type, false);
+
+  const toggleClick = () =>
+    setIsClicked((prev) => {
+      if (prev) mutateRemove();
+      else mutateAdd();
+
+      return !prev;
+    });
 
   count = isClicked ? count + 1 : count;
 
@@ -61,21 +74,21 @@ export const VoteButton: React.FC<VoteButtonProps> = ({
         toggleClick();
       }}
     >
-      {type === "like" && (
+      {type === "likes" && (
         <>
           <span>👍</span>
           <span>{count}</span>
         </>
       )}
 
-      {type === "mindblown" && (
+      {type === "mindblownVotes" && (
         <>
           <span>😲</span>
           <span>{count}</span>
         </>
       )}
 
-      {type === "disagree" && (
+      {type === "falseVotes" && (
         <>
           <span>⛔</span>
           <span>{count}</span>
