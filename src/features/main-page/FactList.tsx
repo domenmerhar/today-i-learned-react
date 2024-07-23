@@ -15,18 +15,16 @@ export const FactList = () => {
   const category = searchParams.get("category") as BadgeType | null;
   const { data, isLoading, error } = useFacts(category);
 
-  if (isLoading || !data) {
-    <div>loading</div>;
-  }
+  if (error) return <div>error</div>;
+
+  if (isLoading || !data) return <div>loading</div>;
 
   return (
     <StyledFactList>
       {data?.map((fact) => (
-        <>
-          <FactCard key={fact.id} {...fact}>
-            {fact.description}
-          </FactCard>
-        </>
+        <FactCard key={fact.id} {...fact}>
+          {fact.description}
+        </FactCard>
       ))}
     </StyledFactList>
   );
