@@ -69,11 +69,11 @@ export const FactCard: React.FC<FactCardProps> = ({
         {children}
         <Source href={source}>( Source )</Source>
       </div>
-      <Badge type={category as BadgeType} />
+      <Badge type={falseVotes > likes ? "disputed" : (category as BadgeType)} />
       <ButtonsHolder>
-        <VoteButton type="like" count={likes} />
-        <VoteButton type="mindblown" count={mindblownVotes} />
-        <VoteButton type="disagree" count={falseVotes} />
+        <VoteButton type="likes" id={id} count={likes} />
+        <VoteButton type="mindblownVotes" id={id} count={mindblownVotes} />
+        <VoteButton type="falseVotes" id={id} count={falseVotes} />
       </ButtonsHolder>
     </CardHolder>
   );
