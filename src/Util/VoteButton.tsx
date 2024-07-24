@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useVote } from "../hooks/useVote";
-import { ApiVoteType } from "../types";
+import { ApiVoteType, CategoryType } from "../types";
 
 interface VoteButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   type: ApiVoteType;
   id: string;
   count: number;
+  category: Omit<CategoryType, "all">;
 }
 
 const StyledVoteButton = styled.button<{ $active: boolean }>`
@@ -45,12 +46,13 @@ export const VoteButton: React.FC<VoteButtonProps> = ({
   type,
   count,
   id,
+  category,
   ...rest
 }) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
-  const { mutate: mutateAdd } = useVote(id, type, true);
-  const { mutate: mutateRemove } = useVote(id, type, false);
+  const { mutate: mutateAdd } = useVote(id, type, true, category);
+  const { mutate: mutateRemove } = useVote(id, type, false, category);
 
   const toggleClick = () =>
     setIsClicked((prev) => {
