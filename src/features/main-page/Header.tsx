@@ -9,7 +9,7 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  grid-column: 1 / -1;
+  grid-area: header;
 `;
 
 export const Header = () => {
