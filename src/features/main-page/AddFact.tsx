@@ -9,6 +9,8 @@ import { AddFactInterface } from "../../types";
 const StyledAddFact = styled.form`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+
   gap: 16px;
 
   background-color: var(--zinc-600);
@@ -33,6 +35,10 @@ const FactInput = styled.input`
   &::placeholder {
     color: var(--zinc-100);
   }
+
+  @media (max-width: 57em) {
+    padding: 1rem 1.3rem;
+  }
 `;
 
 const WordCounter = styled.span`
@@ -50,6 +56,10 @@ const Select = styled.select`
   padding: 1.3rem 1.6rem;
   font-size: 1.6rem;
   color: var(--zinc-100);
+
+  @media (max-width: 57em) {
+    padding: 1rem 1.3rem;
+  }
 `;
 
 const SourceInput = styled(FactInput)``;
