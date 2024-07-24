@@ -20,10 +20,6 @@ const CardHolder = styled.div`
     flex: 1 1 30rem;
   }
 
-  & > :nth-child(3) {
-    grid-column: 1 / -1;
-  }
-
   @media (max-width: 55em) {
     flex-direction: column;
 
@@ -71,9 +67,19 @@ export const FactCard: React.FC<FactCardProps> = ({
       </div>
       <Badge type={falseVotes > likes ? "disputed" : (category as BadgeType)} />
       <ButtonsHolder>
-        <VoteButton type="likes" id={id} count={likes} />
-        <VoteButton type="mindblownVotes" id={id} count={mindblownVotes} />
-        <VoteButton type="falseVotes" id={id} count={falseVotes} />
+        <VoteButton type="likes" id={id} count={likes} category={category} />
+        <VoteButton
+          type="mindblownVotes"
+          id={id}
+          count={mindblownVotes}
+          category={category}
+        />
+        <VoteButton
+          type="falseVotes"
+          id={id}
+          count={falseVotes}
+          category={category}
+        />
       </ButtonsHolder>
     </CardHolder>
   );
