@@ -13,7 +13,7 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 
 const StyledButton = styled.button<StyledButtonProps>`
   border: none;
-  padding: 1.5rem 2.25rem;
+  padding: 1.25rem 1.8rem;
   background: ${(props) => {
     switch (props.$backgroudColor) {
       case "blue":
@@ -42,7 +42,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   color: white;
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   letter-spacing: 1px;
 
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
@@ -52,6 +52,10 @@ const StyledButton = styled.button<StyledButtonProps>`
   transition: all 200ms;
   &:hover {
     transform: scale(1.1) rotate(-2deg);
+  }
+
+  @media (max-width: 57em) {
+    padding: 1rem 1.5rem;
   }
 `;
 
