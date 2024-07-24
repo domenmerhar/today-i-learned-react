@@ -44,3 +44,9 @@ export interface FactInterface {
   falseVotes: number;
   source: string;
 }
+
+export interface AddFactInterface {
+  description: string;
+  source: string;
+  category: Omit<CategoryType, "all">;
+}
