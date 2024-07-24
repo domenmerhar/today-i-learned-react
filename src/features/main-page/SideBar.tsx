@@ -8,6 +8,8 @@ const StyledSideBar = styled.aside`
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+
+  grid-template-areas: "sidebar";
 `;
 
 export const SideBar = () => {
