@@ -1,9 +1,5 @@
 import { AddFactInterface } from "../types";
-import {
-  InvalidateQueryFilters,
-  useMutation,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addFact } from "../api/addFact";
 
 export const useAddFact = () => {
@@ -14,11 +10,14 @@ export const useAddFact = () => {
       addFact({ description, source, category }),
 
     onSuccess(data) {
-      queryClient.invalidateQueries(["facts", "all"] as InvalidateQueryFilters);
-      queryClient.invalidateQueries([
-        "facts",
-        data.category,
-      ] as InvalidateQueryFilters);
+      queryClient.invalidateQueries({
+        queryKey: ["facts", "all"],
+        refetchType: "inactive",
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["facts", data.category],
+        refetchType: "inactive",
+      });
     },
   });
 
