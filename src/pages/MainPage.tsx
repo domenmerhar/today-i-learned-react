@@ -9,7 +9,8 @@ const StyledMainPage = styled.div`
   align-items: start;
   gap: 1.6rem;
 
-  width: 80vw;
+  width: 75vw;
+  max-width: 1440px;
   padding: 3.2rem 0;
 `;
 
