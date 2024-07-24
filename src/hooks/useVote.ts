@@ -1,8 +1,4 @@
-import {
-  InvalidateQueryFilters,
-  useMutation,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { changeVote } from "../api/changeVote";
 import { ApiVoteType, CategoryType } from "../types";
 
