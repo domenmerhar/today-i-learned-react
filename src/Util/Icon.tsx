@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const StyledIcon = styled.div`
   background: linear-gradient(135deg, var(--red), var(--purple));
-  width: 6.4rem;
-  height: 6.4rem;
+  min-width: 6.4rem;
+  min-height: 6.4rem;
   border-radius: 50%;
 
   display: flex;
