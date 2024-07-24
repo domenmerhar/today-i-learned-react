@@ -16,16 +16,10 @@ const CardHolder = styled.div`
   align-items: center;
   border-radius: 16px;
 
+  min-width: 373px;
+
   & > :nth-child(1) {
     flex: 1 1 30rem;
-  }
-
-  @media (max-width: 55em) {
-    flex-direction: column;
-
-    & > :nth-child(1) {
-      flex: 0;
-    }
   }
 `;
 
@@ -35,6 +29,10 @@ const ButtonsHolder = styled.div`
   gap: 0.4rem;
 
   justify-self: end;
+
+  @media (max-width: 59em) {
+    margin-left: auto;
+  }
 `;
 
 const Source = styled.a`
