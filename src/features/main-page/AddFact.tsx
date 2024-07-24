@@ -3,6 +3,8 @@ import { Button } from "../../Util/Button";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import { useAddFact } from "../../hooks/useAddFact";
+import { AddFactInterface } from "../../types";
 
 const StyledAddFact = styled.form`
   display: flex;
@@ -53,14 +55,23 @@ const Select = styled.select`
 const SourceInput = styled(FactInput)``;
 
 export const AddFact = () => {
-  const { register, handleSubmit: handleSubmitHook, getValues } = useForm();
+  const {
+    register,
+    handleSubmit: handleSubmitHook,
+    getValues,
+    reset,
+  } = useForm();
   const [charactersRemaining, setCharactersRemaining] = useState<number>(255);
+
+  const { mutate } = useAddFact();
 
   const handleSubmit = handleSubmitHook(() => {
     console.log(getValues("category"));
     if (!getValues("category")) return toast.error("Please select a category");
 
-    toast.success("Data sent");
+    mutate(getValues() as AddFactInterface);
+    reset();
+    setCharactersRemaining(255);
   });
 
   return (
@@ -69,7 +80,7 @@ export const AddFact = () => {
         maxLength={255}
         required
         placeholder="Share a fact ..."
-        {...register("fact")}
+        {...register("description")}
         onChange={(e) => setCharactersRemaining(255 - e.target.value?.length)}
       />
       <WordCounter>{charactersRemaining}</WordCounter>
