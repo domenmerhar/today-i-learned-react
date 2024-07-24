@@ -40,6 +40,10 @@ const StyledVoteButton = styled.button<{ $active: boolean }>`
     font-size: 1.6rem;
     transform: translateY(-2px);
   }
+
+  @media (max-width: 56em) {
+    padding: 0.5rem 0.75rem;
+  }
 `;
 
 export const VoteButton: React.FC<VoteButtonProps> = ({
