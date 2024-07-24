@@ -6,8 +6,9 @@ import { BadgeType, FactInterface } from "../../types";
 const CardHolder = styled.div`
   background-color: var(--zinc-600);
 
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmmax(30rem, 1fr) auto auto);
+  grid-template-areas: "description badge buttons";
   gap: 16px;
 
   padding: 1.5rem 2.25rem;
@@ -19,7 +20,22 @@ const CardHolder = styled.div`
   min-width: 373px;
 
   & > :nth-child(1) {
-    flex: 1 1 30rem;
+    grid-area: description;
+  }
+
+  & > :nth-child(2) {
+    grid-area: badge;
+  }
+
+  & > :nth-child(3) {
+    grid-area: buttons;
+  }
+
+  @media (max-width: 75em) {
+    grid-template-columns: min-content 1fr;
+    grid-template-areas:
+      "description description"
+      "badge buttons";
   }
 `;
 
