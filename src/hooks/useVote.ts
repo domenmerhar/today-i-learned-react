@@ -18,12 +18,14 @@ export const useVote = (
     mutationKey: ["vote", id, vote, add],
     mutationFn: () => changeVote(id, vote, add),
     onSettled: () => {
-      console.log("Vote changed");
-      queryClient.invalidateQueries(["facts"] as InvalidateQueryFilters);
-      queryClient.invalidateQueries([
-        "facts",
-        category,
-      ] as InvalidateQueryFilters);
+      queryClient.invalidateQueries({
+        queryKey: ["facts", "all"],
+        refetchType: "inactive",
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["facts", category],
+        refetchType: "inactive",
+      });
     },
   });
 
