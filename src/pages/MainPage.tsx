@@ -27,7 +27,7 @@ const StyledMainPage = styled.div`
   }
 
   @media (max-width: 34em) {
-    width: 85vw;
+    width: 90vw;
   }
 `;
 
