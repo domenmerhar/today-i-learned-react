@@ -7,7 +7,7 @@ const CardHolder = styled.div`
   background-color: var(--zinc-600);
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmmax(30rem, 1fr) auto auto);
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr) 12.5rem 22rem);
   grid-template-areas: "description badge buttons";
   gap: 16px;
 
@@ -25,13 +25,14 @@ const CardHolder = styled.div`
 
   & > :nth-child(2) {
     grid-area: badge;
+    justify-self: start;
   }
 
   & > :nth-child(3) {
     grid-area: buttons;
   }
 
-  @media (max-width: 75em) {
+  @media (max-width: 81em) {
     grid-template-columns: min-content 1fr;
     grid-template-areas:
       "description description"
