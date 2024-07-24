@@ -9,6 +9,11 @@ const StyledFactList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  overflow: hidden;
+  height: 75vh;
+  overflow-y: scroll;
+  padding-right: 1.6rem;
+  grid-template-areas: fact-list;
 `;
 
 const LoadingBarHolder = styled.div`
